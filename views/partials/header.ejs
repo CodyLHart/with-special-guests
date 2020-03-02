@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>w/ Special Guests</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <nav>
+    <div id="wsg">
+      w/ SPECIAL GUESTS
+    </div>
+    <div id="login">
+      <% if (user) { %>
+        WELCOME, <%= user.name.toUpperCase() %> &nbsp;
+        <a href="/logout">| &nbsp; LOG OUT</a>
+      <% } else { %>
+        <a href="/auth/google">Login with Google</a>
+      <% } %>
+    </div>
+  </nav>

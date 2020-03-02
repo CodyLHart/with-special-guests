@@ -1,8 +1,50 @@
+* {
+  margin: 0;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  background-color: #202020;
+  font-family: "Montserrat";
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
+
+nav {
+  font-family: 'Montserrat';
+  background-color: #303030;
+  color: #FC8C03;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  height: 40px;
+}
+
+label {
+  color: #FC8C03;
+}
+
+#login {
+  display: inline-block;
+  font-size: 12px;
+  height: 12px;
+  padding: 14px;
+}
+
+#wsg {
+  display: inline-block;
+  height: 20px;
+  font-size: 20px;
+  padding: 10px; 
+}
+
+form {
+  margin-left: 15px;
+}
+
+
+
