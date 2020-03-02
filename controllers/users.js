@@ -18,12 +18,13 @@ function show(req, res) {
     if (req.user) {
         console.log(req.user);
         let hasProfile = false;
-        Profile.find({user: req.user._id}, function(err, profile) {
-            if (profile) hasProfile = true;
+        Profile.find({user: req.user._id}, function(err, profiles) {
+            if (profiles.length) hasProfile = true;
             res.render('users/home', {
                 user: req.user,
                 name: req.query.name,
-                hasProfile: hasProfile
+                hasProfile: hasProfile,
+                profile: profiles
             });
         })
     } else {
