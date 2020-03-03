@@ -8,6 +8,7 @@ var usersCtrl = require('../controllers/users');
 router.get('/', usersCtrl.index);
 router.get('/home', usersCtrl.show);
 router.get('/profile', usersCtrl.new);
+router.post('/home', usersCtrl.create);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

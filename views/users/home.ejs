@@ -1,8 +1,25 @@
 <%- include('../partials/header') %>
-<h1>WELCOME, BITCH</h1>
-<% if (hasProfile) {%>
-    <h2>Profile: <%= profile %></h2>
-<% } else { %>
-    <h2>YOU NEED TO MAKE A PROFILE</h2> 
-    <a href="/users/profile">CREATE PROFILE</a>
-<% } %>
+<aside>
+    <% console.log(profile) %>
+    <div id="profile-picture"></div>
+    <h4> <%= profile.bandName %> </h4>
+    <h5> <%= profile.city %>, <%= profile.state %> </h5>
+    <a href="#" class="aside-nav" id="top-aside-nav">FIND SHOWS</a>
+    <a href="#" class="aside-nav">NEW SHOW</a>
+    <a href="#" class="aside-nav" id="bottom-aside-nav">MY SHOWS</a>
+    
+</aside>
+<main>
+    <% if (hasProfile) {%>
+        <h2>Profile: <%= profile %></h2>
+    <% } else { %>
+        <h2>YOU NEED TO MAKE A PROFILE</h2> 
+        <a href="/users/profile">CREATE PROFILE</a>
+    <% } %>
+</main>
+<footer>
+  <p>COPYRIGHT, BITCHES</p>
+</footer>
+
+
+

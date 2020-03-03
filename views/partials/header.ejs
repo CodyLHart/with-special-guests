@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <nav>
-    <div id="wsg">
-      w/ SPECIAL GUESTS
-    </div>
-    <div id="login">
-      <% if (user) { %>
-        WELCOME, <%= user.name.toUpperCase() %> &nbsp;
-        <a href="/logout">| &nbsp; LOG OUT</a>
-      <% } else { %>
-        <a href="/auth/google">Login with Google</a>
-      <% } %>
-    </div>
-  </nav>
+    <header>
+        <nav>
+        <div id="wsg">
+            w/ SPECIAL GUESTS
+        </div>
+        <div id="login">
+            <% if (user) { %>
+            WELCOME, <%= user.name.toUpperCase() %> &nbsp; <span id="line">|</span>
+            <a href="/logout"> &nbsp; LOG OUT</a>
+            <% } else { %>
+            <a href="/auth/google">Login with Google</a>
+            <% } %>
+        </div>
+        </nav>
+    </header>

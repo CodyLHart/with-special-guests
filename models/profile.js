@@ -48,11 +48,6 @@ var profileSchema = new Schema({
     website: {
         type: String,
         required: true
-    },
-    socialLinks: [socialSchema],
-    musicLink: {
-        type: String,
-        required: true
     }
 }, {
     timestamps: true
