@@ -16,6 +16,7 @@ require('./config/passport.js');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var postsRouter = require('./routes/posts');
 // var postsRouter = require('./routes/posts');
 
 
@@ -42,7 +43,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/posts', postsRouter);
+app.use('/', postsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

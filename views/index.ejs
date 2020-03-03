@@ -1,4 +1,28 @@
-<%- include('./partials/header') %> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>w/ Special Guests</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body id="landing-body">
+    <header>
+        <nav>
+        <div id="wsg">
+            <span style="color: #808080">w/</span>SPECIAL GUESTS
+        </div>
+        <div id="login-small">
+            <% if (user) { %>
+            WELCOME, <%= user.name.toUpperCase() %> &nbsp; <span id="line">|</span>
+            <a href="/logout"> &nbsp; LOG OUT</a>
+            <% } else { %>
+            <a href="/auth/google">Login with Google</a>
+            <% } %>
+        </div>
+        </nav>
+    </header>
   <main id="landing-main">
     <section id="landing-left">
       <div class="landing-info">

@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/aside') %>
+    <section id="main">
+    <div id="page-header"><h1>CREATE A NEW POST</h1></div>
+    <form id="new-post" action="/users/posts" method="POST">
+        <label>DATE:
+            <input type="date" name="date">
+        </label>
+        <label>VENUE:
+            <input type="text" name="venue">
+        </label>
+        <label>DESCRIPTION:
+            <textarea name="description" cols="50" rows="10"></textarea>
+        </label>
+        <input type="hidden" name="active" value="true">
+        <button id="post-button" type="submit">CREATE POST</button>
+    </form>
+    </section>
+<%- include('../partials/footer') %>
