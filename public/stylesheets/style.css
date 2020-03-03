@@ -5,6 +5,8 @@
 body {
   padding: 0;
   background-color: #202020;
+  background-image: url(https://i.imgur.com/hXnTkJb.gif);
+  background-size: cover;
   font-family: "Montserrat";
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -134,6 +136,10 @@ a:hover {
   grid-column: 1 / 2;
   margin: 20px 0;
   border-right: 1px solid #505050;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #landing-right {
   grid-column: 2 / 3;
@@ -171,15 +177,17 @@ button:hover {
 }
 
 #w {
-  font-size: 60px;
+  font-size: 80px;
   color: #808080;
   margin-right: 5px;
   /* margin-bottom: 10px; */
   vertical-align: super;
+  font-weight: lighter;
 }
 
 #SG {
   font-size: 120px;
+  font-weight: lighter;
   color: #CC5C00;
 }
 
@@ -192,6 +200,7 @@ h2 {
 footer nav {
   justify-content: center;
   align-items: center;
+  border-bottom: none;
 }
 
 .footer-nav {
@@ -211,8 +220,18 @@ footer nav {
 }
 
 .landing-info {
-  margin: 20px;
-  font-size: 18px;
-  width: 60%;
+  font-size: 20px;
   color: #808080;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  margin: -20px 0;
+  width: 70%;
+}
+
+img {
+  width: 80px;
+  margin: 20px;
 }
