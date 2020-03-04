@@ -53,8 +53,8 @@ function show(req, res) {
 }
 
 function index(req, res) {
-    // console.log('TEST', req.user);
-    Post.find({}, function(err, posts) {
+    console.log('TEST', req.user);
+    Post.find({}).sort([['date']]).exec(function(err, posts) {
         posts.forEach(post => {
             console.log('POST:', post);
             Profile.findById(post.host, function(err, profile) {
@@ -62,7 +62,7 @@ function index(req, res) {
                 post.hostBand = profile.bandName;
             });
         });
-        Profile.findOne(req.params.id, function(err, profile) {
+        Profile.findOne({user: req.user._id}, function(err, profile) {
             res.render('posts/index', {
                 posts,
                 // user: req.user,

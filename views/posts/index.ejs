@@ -8,15 +8,15 @@
                 <th>VENUE</th>
                 <th>DATE</th>
                 <th>BAND</th>
-                <th>SUBMISSIONS</th>]
+                <th>SUBMISSIONS</th>
                 <th></th>
             </thead>
             <tbody>
                 <% posts.forEach(post => { %>
-                    <% console.log('POST.HOST:', post.host) %>
-                    <% console.log('PROFILE._ID:', profile._id) %>
+                    <% console.log('POST.HOST:', typeof post.host) %>
+                    <% console.log('PROFILE._ID:', typeof profile._id) %>
 
-                    <% if (post.host !== profile._id) { %>
+                    <% if (post.host.toString() !== profile._id.toString()) { %>
                     <tr>
                         <td><%= post.venue %></td>
                         <% let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'] %>

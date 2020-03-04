@@ -280,9 +280,10 @@ table {
 
 td {
   border: 1px solid #454545;
+  padding: 5px;
 }
 
-table #venue {
+/* table #venue {
   min-width: 100px;
 }
 
@@ -292,7 +293,7 @@ table #date {
 
 table #sub {
   width: 20px;
-}
+} */
 
 textarea {
   vertical-align: top;
