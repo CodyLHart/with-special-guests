@@ -14,7 +14,7 @@ var submissionSchema = new Schema ({
 var postSchema = new Schema ({
     host: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Profile",
         // required: true
     },
     date: {
