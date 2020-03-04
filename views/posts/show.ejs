@@ -19,7 +19,7 @@
                         <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January']; %>
                         <% let numDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] %>
                         <td id="date">
-                                <%- `${days[post.date.getDay()+1]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()+ 1}, ${post.date.getFullYear()}` %>
+                                <%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %>
                         </td>
                         <td id="sub"><%= '0' %></td>
                         <td class="button-td">
