@@ -8,7 +8,8 @@ module.exports = {
     index,
     delete: deletePost,
     edit,
-    update
+    update,
+    view
 }
 
 function newPost(req, res) {
@@ -95,5 +96,21 @@ function update(req, res) {
     Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, post) {
         console.log(post);
         res.redirect(`/posts`)
+    });
+}
+
+function view(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        Profile.findById(post.host, function(err, profile) {
+            console.log('PROFILE:', profile);
+            post.hostBand = profile.bandName;
+        });
+        Profile.findOne({user: req.user._id}, function(err, profile) {
+            res.render('posts/view', {
+                post,
+                // user: req.user,
+                profile
+            });
+        });
     });
 }

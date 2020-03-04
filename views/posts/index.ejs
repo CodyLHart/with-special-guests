@@ -24,7 +24,11 @@
                         <td><%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %></td>
                         <td><%= post.hostBand %></td>
                         <td><%= post.submissions.length %></td>
-                        <td><%= post.active %></td>
+                        <td class="button-td">
+                            <form id="view-form" action="/posts/<%= post._id %>" method="GET">
+                                <button id="view-post" type="submit">VIEW</button>
+                            </form>
+                        </td>
                     </tr>
                     <% } %>
                 <% }); %>

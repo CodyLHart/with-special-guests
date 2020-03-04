@@ -59,7 +59,7 @@ button {
   background-color: #2A2A2A;;
   width: 40%;
   text-align: center;
-  margin: 10px;
+  margin: 0;
   border-radius: 15px;
   border: none;
   color: #CC5C00;
@@ -80,12 +80,6 @@ button:hover {
   align-items: center;
 }
 
-.copyright {
-  color: #CC5C00;
-  margin: 0 30px;
-  text-align: center;
-}
-
 .button-td {
   border: none;
   width: 110px;
@@ -93,6 +87,12 @@ button:hover {
 
 .button-td button {
   width: 100px;
+}
+
+.copyright {
+  color: #CC5C00;
+  margin: 0 30px;
+  text-align: center;
 }
 
 footer {
@@ -162,6 +162,10 @@ label {
 
 #landing-body {
   grid-template-columns: 1fr;
+}
+
+.landing-button {
+  margin: 10px;
 }
 
 .landing-info {
@@ -273,7 +277,7 @@ table {
   color: white;
   /* width: 80%; */
   border-collapse: collapse;
-  margin: 0 auto;
+  margin: 25px auto;
   text-align: center;
 }
 
@@ -283,7 +287,7 @@ td {
   padding: 5px;
 }
 
-/* table #venue {
+table #venue {
   min-width: 100px;
 }
 
@@ -293,7 +297,7 @@ table #date {
 
 table #sub {
   width: 20px;
-} */
+}
 
 textarea {
   vertical-align: top;
@@ -312,6 +316,14 @@ textarea {
 
 #update-post input {
   margin: 10px;
+}
+
+#view-post {
+  width: 80px;
+}
+
+#view-form {
+  margin: 0;
 }
 
 #wsg {
