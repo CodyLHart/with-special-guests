@@ -2,7 +2,7 @@
     <%- include('../partials/aside') %>
     <section id="main">
     <div id="page-header"><h1>CREATE A NEW POST</h1></div>
-    <form id="new-post" action="/users/posts" method="POST">
+    <form id="new-post" action="/posts" method="POST">
         <label>DATE:
             <input type="date" name="date">
         </label>
@@ -13,6 +13,7 @@
             <textarea name="description" cols="50" rows="10"></textarea>
         </label>
         <input type="hidden" name="active" value="true">
+        <input type="hidden" name="host" value="<%= user._id %>">
         <button id="post-button" type="submit">CREATE POST</button>
     </form>
     </section>

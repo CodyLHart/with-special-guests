@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/aside') %>
+    <section id="main">
+    <div id="page-header"><h1>FIND SHOWS</h1></div>
+    <% if (posts.length) { %>
+        <table>
+            <thead>
+                <th>VENUE</th>
+                <th>DATE</th>
+                <th>SUBMISSIONS</th>]
+                <th></th>
+            </thead>
+            <tbody>
+                <% posts.forEach(post => { %>
+                    <tr>
+                        <td><%= post.venue %></td>
+                        <% let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'] %>
+                        <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; %>
+                        <td><%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %></td>
+                        <!-- <td><%= post.date %></td> -->
+                        <td><%= '0' %></td>
+                        <td><%= post.active %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h3>THERE ARE CURRENTLY NO POSTS</h3>
+    <% }; %>
+    </section>
+<%- include('../partials/footer') %>

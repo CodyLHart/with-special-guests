@@ -1,40 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// var socialSchema = new Schema({
-//     social: {
-//         type: String,
-//         enum: ['facebook', 'twitter', 'instagram'],
-//         required: true,
-//     },
-//     url: {
-//         type: String,
-//         require: true
-//     } 
-// }, {
-//     timestamps: true
-// })
-
-var postSchema = new Schema ({
-    date: {
-        type: Date,
-        required: true
-    },
-    venue: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    active: {
-        type: Boolean,
-        default: true,
-        required: true
-    }
-})
-
 var profileSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
@@ -69,7 +35,6 @@ var profileSchema = new Schema({
         type: String,
         required: true
     },
-    posts: [postSchema]
 }, {
     timestamps: true
 });

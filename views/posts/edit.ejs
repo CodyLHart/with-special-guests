@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/aside') %>
+    <section id="main">
+    <div id="page-header"><h1>EDIT POST</h1></div>
+    <form id="update-post" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+        <label>DATE:
+            <% const d = post.date %>
+            <input type="date" name="date" value="<%= `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate()+1}` %>">
+        </label>
+        <label>VENUE:
+            <input type="text" name="venue" value="<%= post.venue %>">
+        </label>
+        <label>DESCRIPTION:
+            <textarea name="description" cols="50" rows="10"><%= post.description %></textarea>
+        </label>
+        <button id="update-button" type="submit">UPDATE POST</button>
+    </form>
+    </section>
+<%- include('../partials/footer') %>

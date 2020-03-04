@@ -2,6 +2,42 @@
     <%- include('../partials/aside') %>
     <section id="main">
     <div id="page-header"><h1>MY SHOW POSTS</h1></div>
-    
+    <% if (posts.length) { %>
+        <table>
+            <thead>
+                <th>VENUE</th>
+                <th>DATE</th>
+                <th>SUBMISSIONS</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <% posts.forEach(post => { %>
+                    <tr>
+                        <td id="venue"><%= post.venue %></td>
+                        <% let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
+                        <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January']; %>
+                        <% let numDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] %>
+                        <td id="date">
+                                <%- `${days[post.date.getDay()+1]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()+ 1}, ${post.date.getFullYear()}` %>
+                        </td>
+                        <td id="sub"><%= '0' %></td>
+                        <td class="button-td">
+                            <form action="/posts/<%= post._id %>/?_method=DELETE" method="POST">
+                                <button id="delete-post" type="submit">DELETE</button>
+                            </form>
+                        </td>
+                        <td class="button-td">
+                            <form action="/posts/<%= post._id %>/edit" method="GET">
+                                <button id="edit-post" type="submit">EDIT</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h3>YOU CURRENTLY HAVE NO POSTS</h3>
+    <% }; %>
     </section>
 <%- include('../partials/footer') %>
