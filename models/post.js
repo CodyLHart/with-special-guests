@@ -17,6 +17,7 @@ var postSchema = new Schema ({
         ref: "Profile",
         // required: true
     },
+    hostBand: String,
     date: {
         type: Date,
         required: true

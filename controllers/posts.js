@@ -39,9 +39,10 @@ function create(req, res) {
 
 function show(req, res) {
     // console.log('TESTING');
-    Post.find({host: req.user._id}).sort([['date']]).exec(function(err, posts) {
-        // console.log(posts);
-        Profile.findOne({user: req.user._id}, function(err, profile) {
+
+    // console.log(posts);
+    Profile.findOne({user: req.user._id}, function(err, profile) {
+            Post.find({host: profile._id}).sort([['date']]).exec(function(err, posts) {
             res.render('posts/show', {
                 posts,
                 // user: req.user,
@@ -54,13 +55,20 @@ function show(req, res) {
 function index(req, res) {
     // console.log('TEST', req.user);
     Post.find({}, function(err, posts) {
-        Profile.findOne({user: req.user._id}, function(err, profile) {
+        posts.forEach(post => {
+            console.log('POST:', post);
+            Profile.findById(post.host, function(err, profile) {
+                console.log('PROFILE:', profile);
+                post.hostBand = profile.bandName;
+            });
+        });
+        Profile.findOne(req.params.id, function(err, profile) {
             res.render('posts/index', {
                 posts,
                 // user: req.user,
                 profile
             });
-        });
+        })
     });
 }
 
