@@ -5,6 +5,7 @@
     <% if (posts.length) { %>
         <table>
             <thead>
+                <th></th>
                 <th>VENUE</th>
                 <th>DATE</th>
                 <th>SUBMISSIONS</th>
@@ -14,6 +15,11 @@
             <tbody>
                 <% posts.forEach(post => { %>
                     <tr>
+                        <td class="button-td">
+                            <form action="/posts/<%= post._id %>/view" method="GET">
+                                <button id="edit-post" type="submit">VIEW</button>
+                            </form>
+                        </td>
                         <td id="venue"><%= post.venue %></td>
                         <% let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
                         <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January']; %>

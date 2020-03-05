@@ -10,7 +10,8 @@ module.exports = {
     edit,
     update,
     view,
-    submit
+    submit,
+    viewMine
 }
 
 function newPost(req, res) {
@@ -142,3 +143,14 @@ function submit(req, res) {
     });
 }
 
+function viewMine(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        Profile.findOne({user: req.user._id}, function(err, profile) {
+            res.render('posts/viewMine', {
+                post,
+                // user: req.user,
+                profile
+            });
+        });
+    });
+}

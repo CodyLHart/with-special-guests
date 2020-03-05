@@ -2,7 +2,7 @@
     <%- include('../partials/aside') %>
     <section id="main">
         <div id="page-header"><h1>EDIT PROFILE</h1></div>
-        <form id="profile-form" action="/users/home" method="POST">
+        <form id="profile-form" action="/users/update?_method=PUT" method="POST">
             <input type="hidden" name="user" value="<%= user._id %>">
             <label> BAND NAME:
               <input type="text" name="bandName" value="<%= profile.bandName %>">
@@ -22,12 +22,12 @@
               <input type="text" maxlength="35" name="genre" value="<%= profile.genre %>">
             </label><br>
             <label> ABOUT:
-              <textarea name="about" cols="40" rows="5" maxlength="140" placeholder="&#13;&#10;&#13;&#10;140 CHARACTER LIMIT"></textarea>
+              <textarea name="about" cols="40" rows="5" maxlength="140" placeholder="&#13;&#10;&#13;&#10;140 CHARACTER LIMIT"><%= profile.about %></textarea>
             </label><br>
             <label> WEBSITE:
               <input type="text" name="website" value="<%= profile.website %>">
             </label><br>
-            <button id="profile-button" type="submit">CREATE PROFILE</button>
+            <button id="profile-button" type="submit">UPDATE PROFILE</button>
           </form>
     </section>
 

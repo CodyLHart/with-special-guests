@@ -7,7 +7,8 @@ router.get('/posts', isLoggedIn, postsCtrl.show);
 router.get('/posts/index', isLoggedIn, postsCtrl.index);
 router.get('/posts/:id/edit', isLoggedIn, postsCtrl.edit);
 router.get('/posts/:id', isLoggedIn, postsCtrl.view);
-router.put('/posts/:id/submit', isLoggedIn, postsCtrl.submit)
+router.get('/posts/:id/view', isLoggedIn, postsCtrl.viewMine);
+router.put('/posts/:id/submit', isLoggedIn, postsCtrl.submit);
 router.post('/posts', isLoggedIn, postsCtrl.create);
 router.delete('/posts/:id', isLoggedIn, postsCtrl.delete);
 router.put('/posts/:id', isLoggedIn, postsCtrl.update);

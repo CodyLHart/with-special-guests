@@ -7,6 +7,7 @@ router.get('/home', usersCtrl.home);
 router.get('/profile', usersCtrl.new);
 router.get('/edit', usersCtrl.edit)
 router.post('/home', usersCtrl.create);
+router.put('/update', usersCtrl.update);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

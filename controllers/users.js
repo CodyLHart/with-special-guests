@@ -6,7 +6,8 @@ module.exports = {
     home,
     new: newUser,
     create,
-    edit
+    edit,
+    update
 }
 
 function index(req, res, next) {
@@ -55,4 +56,12 @@ function edit(req,res) {
             profile: profile
         });
     })
+}
+
+function update(req, res) {
+    let myProfileId;
+    Profile.findOneAndUpdate({user: req.user._id}, req.body, function(err, profile) {
+        myProfileId = profile._id;
+        res.redirect(`/users/home`)
+    });
 }
