@@ -58,7 +58,7 @@ function index(req, res) {
     // console.log('TEST', req.user);
     Post.find({}).sort([['date']]).exec(function(err, posts) {
         posts.forEach(post => {
-            // console.log('POST:', post);
+            console.log('POST:', post);
             Profile.findById(post.host, function(err, profile) {
                 // console.log('PROFILE:', profile);
                 post.hostBand = profile.bandName;
@@ -122,10 +122,23 @@ function submit(req, res) {
     Profile.findOne({user: req.user._id}, function(err, profile) {
         console.log(profile);
         Post.findById(req.params.id, function(err, post) {
-             post.submissions.push(profile._id);
-             post.save();
-             console.log("UPDATED:", post)
-             res.redirect('/posts')
+            let hasSubmitted = false;
+            post.submissions.forEach(submission => {
+                if (profile._id = submission['profileId']) {
+                    hasSubmitted = true;
+                };
+            });
+            if (hasSubmitted) {
+                res.redirect('/posts/index');
+            } else {
+            const newSubmission = {profileId: profile._id}
+            post.submissions.push(newSubmission);
+            post.save(function(err){
+                 console.log("UPDATED:", post)
+                 res.redirect('/posts/index');
+             });
+            };
         });
     });
 }
+

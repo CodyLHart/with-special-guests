@@ -20,7 +20,7 @@
                         <td id="date">
                                 <%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %>
                         </td>
-                        <td id="sub"><%= '0' %></td>
+                        <td id="sub"><%= post.submissions.length %></td>
                         <td class="button-td">
                             <form action="/posts/<%= post._id %>/?_method=DELETE" method="POST">
                                 <button id="delete-post" type="submit">DELETE</button>
