@@ -9,7 +9,8 @@ module.exports = {
     delete: deletePost,
     edit,
     update,
-    view
+    view,
+    submit
 }
 
 function newPost(req, res) {
@@ -54,12 +55,12 @@ function show(req, res) {
 }
 
 function index(req, res) {
-    console.log('TEST', req.user);
+    // console.log('TEST', req.user);
     Post.find({}).sort([['date']]).exec(function(err, posts) {
         posts.forEach(post => {
-            console.log('POST:', post);
+            // console.log('POST:', post);
             Profile.findById(post.host, function(err, profile) {
-                console.log('PROFILE:', profile);
+                // console.log('PROFILE:', profile);
                 post.hostBand = profile.bandName;
             });
         });
@@ -92,9 +93,9 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-    console.log('TESTING');
+    // console.log('TESTING');
     Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, post) {
-        console.log(post);
+        // console.log(post);
         res.redirect(`/posts`)
     });
 }
@@ -102,7 +103,7 @@ function update(req, res) {
 function view(req, res) {
     Post.findById(req.params.id, function(err, post) {
         Profile.findById(post.host, function(err, profile) {
-            console.log('PROFILE:', profile);
+            // console.log('PROFILE:', profile);
             post.hostBand = profile.bandName;
         });
         Profile.findOne({user: req.user._id}, function(err, profile) {
@@ -111,6 +112,20 @@ function view(req, res) {
                 // user: req.user,
                 profile
             });
+        });
+    });
+}
+
+function submit(req, res) {
+    console.log('SUBMIT PUSHED');
+    console.log(req.user);
+    Profile.findOne({user: req.user._id}, function(err, profile) {
+        console.log(profile);
+        Post.findById(req.params.id, function(err, post) {
+             post.submissions.push(profile._id);
+             post.save();
+             console.log("UPDATED:", post)
+             res.redirect('/posts')
         });
     });
 }

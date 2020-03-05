@@ -7,6 +7,17 @@
             <% const d = post.date %>
             <input type="date" name="date" value="<%= `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate()+1}` %>">
         </label>
+        <label> CITY:
+            <input type="text" name="city" value="<%= post.city %>">
+        </label>
+        <label> STATE:
+        <select name="state">
+            <% let states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'] %>
+            <% states.forEach(state => { %>
+            <option value="<%= state %>" <%- (state === post.state) ? 'selected' : ''%>><%= state %></option>
+            <% }); %>
+        </select>
+        </label>
         <label>VENUE:
             <input type="text" name="venue" value="<%= post.venue %>">
         </label>

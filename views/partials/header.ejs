@@ -10,9 +10,11 @@
 <body>
     <header>
         <nav>
-        <div id="wsg">
-            <span style="color: #808080">w/</span>SPECIAL GUESTS
-        </div>
+        <a class="wsg" href="/users/home">
+            <div class="wsg">
+                <span style="color: #808080">w/</span>SPECIAL GUESTS
+            </div>
+        </a>
         <div id="login-small">
             <% if (user) { %>
             WELCOME, <%= user.name.toUpperCase() %> &nbsp; <span id="line">|</span>

@@ -3,7 +3,7 @@
         <% if (profile) { %>
         <% console.log(profile) %>
         <div id="profile-picture"></div>
-        <h4> <%= profile.bandName %> </h4>
+        <h4> <a class="band-name" href="/users/edit"><%= profile.bandName %></a> </h4>
         <h5> <%= profile.city %>, <%= profile.state %> </h5>
         <div class="aside-nav" id="top-aside-nav"><a href="/posts/index">FIND SHOWS</a></div>
         <div class="aside-nav"><a href="/posts/new" class="aside-nav">NEW SHOW</a></div>

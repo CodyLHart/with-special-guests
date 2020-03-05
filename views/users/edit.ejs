@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/aside') %>
+    <section id="main">
+        <div id="page-header"><h1>EDIT PROFILE</h1></div>
+        <form id="profile-form" action="/users/home" method="POST">
+            <input type="hidden" name="user" value="<%= user._id %>">
+            <label> BAND NAME:
+              <input type="text" name="bandName" value="<%= profile.bandName %>">
+            </label><br>
+            <label> CITY:
+              <input type="text" name="city" value="<%= profile.city %>">
+            </label><br>
+            <label> STATE:
+              <select name="state">
+                <% let states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'] %>
+                <% states.forEach(state => { %>
+                  <option value="<%= state %>"><%= state %></option>
+                <% }); %>
+              </select>
+            </label><br>
+            <label> GENRE:
+              <input type="text" maxlength="35" name="genre" value="<%= profile.genre %>">
+            </label><br>
+            <label> ABOUT:
+              <textarea name="about" cols="40" rows="5" maxlength="140" placeholder="&#13;&#10;&#13;&#10;140 CHARACTER LIMIT"></textarea>
+            </label><br>
+            <label> WEBSITE:
+              <input type="text" name="website" value="<%= profile.website %>">
+            </label><br>
+            <button id="profile-button" type="submit">CREATE PROFILE</button>
+          </form>
+    </section>
+
+<%- include('../partials/footer') %>
+
+
+

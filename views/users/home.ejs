@@ -1,13 +1,16 @@
 <%- include('../partials/header') %>
     <%- include('../partials/aside') %>
     <section id="main">
+        <div id="page-header"><h1>DASHBOARD</h1></div>
         <% if (hasProfile) {%>
-            <h1>TESTING TESTING</h1>
-            <h1>TESTING TESTING</h1>
-            <h1>TESTING TESTING</h1>
-            <h1>TESTING TESTING</h1>
+            <div id="view-main">
+                <h2>YOUR ACTIVE SHOW POSTS</h2>
+                <h2>YOUR PAST SHOW POSTS</h2>
+                <h2>FIND SUPPORT</h2>
+                <h2>FIND SHOWS SEEKING SUPPORT</h2>
+            </div>
         <% } else { %>
-            <h2>YOU NEED TO MAKE A PROFILE</h2> 
+            <h2>YOU CURRENTLY HAVE NO PROFILE</h2> 
             <a href="/users/profile">CREATE PROFILE</a>
         <% } %>
 
