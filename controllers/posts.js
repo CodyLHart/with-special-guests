@@ -17,9 +17,7 @@ module.exports = {
 function newPost(req, res) {
     Profile.findOne({user: req.user._id}, function(err, profile) {
         if (profile) hasProfile = true;
-        // console.log(req.user);
         res.render('posts/new', {
-            // user: req.user,
             name: req.query.name,
             hasProfile: hasProfile,
             profile: profile
@@ -29,26 +27,16 @@ function newPost(req, res) {
 
 function create(req, res) {
     Post.create(req.body, function (err, post) {
-        // console.log(post);
         res.redirect('/posts');
     });
-    // Profile.findOne({user: req.user._id}, function(err, profile) {
-    //     profile.posts.push(req.body);
-    //     profile.save(function(err) {
-    //         res.redirect('/users/posts');
-    //     });
-    // });
 }
 
 function show(req, res) {
-    // console.log('TESTING');
 
-    // console.log(posts);
     Profile.findOne({user: req.user._id}, function(err, profile) {
             Post.find({host: profile._id}).sort([['date']]).exec(function(err, posts) {
             res.render('posts/show', {
                 posts,
-                // user: req.user,
                 profile
             });
         });
@@ -56,19 +44,15 @@ function show(req, res) {
 }
 
 function index(req, res) {
-    // console.log('TEST', req.user);
     Post.find({}).sort([['date']]).exec(function(err, posts) {
         posts.forEach(post => {
-            // console.log('POST:', post);
             Profile.findById(post.host, function(err, profile) {
-                // console.log('PROFILE:', profile);
                 post.hostBand = profile.bandName;
             });
         });
         Profile.findOne({user: req.user._id}, function(err, profile) {
             res.render('posts/index', {
                 posts,
-                // user: req.user,
                 profile
             });
         })
@@ -86,7 +70,6 @@ function edit(req, res) {
         Profile.findOne({user: req.user._id}, function(err, profile) {
             res.render('posts/edit', {
                 post,
-                // user: req.user,
                 profile
             });
         });
@@ -94,9 +77,7 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-    // console.log('TESTING');
     Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, post) {
-        // console.log(post);
         res.redirect(`/posts`)
     });
 }
@@ -104,13 +85,11 @@ function update(req, res) {
 function view(req, res) {
     Post.findById(req.params.id, function(err, post) {
         Profile.findById(post.host, function(err, profile) {
-            // console.log('PROFILE:', profile);
             post.hostBand = profile.bandName;
         });
         Profile.findOne({user: req.user._id}, function(err, profile) {
             res.render('posts/view', {
                 post,
-                // user: req.user,
                 profile
             });
         });
@@ -153,25 +132,12 @@ function viewMine(req, res) {
             });
         }
         console.log('SUBMITTED:', submitted);
-        // post.submissions.forEach(submission => {
-        //     Profile.findById(submission.profileId, function(err, profile) {
-        //         submitted.push(profile);
-        //     });
-        //     console.log("SUBMITTED", submitted)
-        // });
         Profile.findOne({user: req.user._id}, function(err, profile) {
             res.render('posts/viewMine', {
                 post,
-                // user: req.user,
                 profile,
                 submitted
             });
         });
     });
 }
-
-// WHY THE FUCK IS MY VIEWMINE FUNCTION BEING SO WEIRD WITH THE SUBMITTED ARRAY
-// WHEN I REFRESH THE APP IT JUST THROWS THE BANDS IN AND OUT ALL WILLY NILLY
-// IF I CONSOLE LOG IN PROFILE.FINDONE IT CAN FIND THE SUBMITTED ARRAY
-// IF I CONSOLE LOG AT ANY OTHER TIME THE ARRAY IS EMPTY
-// WHAT THE REAL LIFE ACTUAL FUCK

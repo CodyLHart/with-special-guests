@@ -19,7 +19,6 @@ function index(req, res, next) {
 
 function home(req, res) {
     if (req.user) {
-        // console.log(req.user);
         let hasProfile = false;
         Profile.findOne({user: req.user._id}, function(err, profile) {
             if (profile) hasProfile = true;
@@ -42,9 +41,7 @@ function newUser(req, res) {
 }
 
 function create(req, res) {
-    // console.log(req.body);
     Profile.create(req.body, function(err, profile) {
-        // console.log(profile)
         res.redirect('/users/home');
     });
 }

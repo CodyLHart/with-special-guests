@@ -15,7 +15,6 @@ var postSchema = new Schema ({
     host: {
         type: Schema.Types.ObjectId,
         ref: "Profile",
-        // required: true
     },
     hostBand: String,
     date: {
