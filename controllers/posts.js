@@ -145,13 +145,20 @@ function submit(req, res) {
 }
 
 function viewMine(req, res) {
+    const submitted = [];
     Post.findById(req.params.id, function(err, post) {
-        let submitted = [];
-        post.submissions.forEach(submission => {
-            Profile.findById(submission.profileId, function(err, profile) {
+        for (let i = 0; i < post.submissions.length; i++) {
+            Profile.findById(post.submissions[i].profileId, function(err, profile) {
                 submitted.push(profile);
             });
-        });
+        }
+        console.log('SUBMITTED:', submitted);
+        // post.submissions.forEach(submission => {
+        //     Profile.findById(submission.profileId, function(err, profile) {
+        //         submitted.push(profile);
+        //     });
+        //     console.log("SUBMITTED", submitted)
+        // });
         Profile.findOne({user: req.user._id}, function(err, profile) {
             res.render('posts/viewMine', {
                 post,
@@ -162,3 +169,9 @@ function viewMine(req, res) {
         });
     });
 }
+
+// WHY THE FUCK IS MY VIEWMINE FUNCTION BEING SO WEIRD WITH THE SUBMITTED ARRAY
+// WHEN I REFRESH THE APP IT JUST THROWS THE BANDS IN AND OUT ALL WILLY NILLY
+// IF I CONSOLE LOG IN PROFILE.FINDONE IT CAN FIND THE SUBMITTED ARRAY
+// IF I CONSOLE LOG AT ANY OTHER TIME THE ARRAY IS EMPTY
+// WHAT THE REAL LIFE ACTUAL FUCK
