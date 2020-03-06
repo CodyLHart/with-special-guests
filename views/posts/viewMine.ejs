@@ -15,12 +15,26 @@
         <h3 class="details">SHOW DETAILS</h3>
         <h4 class="details"><%= post.description %></h4><br>
         <h3 class="details">SUBMISSIONS</h3>
-        <h4 class="details"><%= post.submissions %></h4>
-        <div id="submit-div">
-            <form action="/posts/<%= post._id %>/submit?_method=PUT" method="POST">
-                <button id="submit" type="submit">SUBMIT FOR THIS SHOW</button>
-            </form>
-        </div>
+        <% if (submitted.length) { %>
+        <table>
+            <thead>
+                <th>BAND</th>
+                <th>LOCATION</th>
+                <th>GENRE</th>
+            </thead>
+            <tbody>
+                <% submitted.forEach(sub => { %>
+                    <tr>
+                        <td><%= sub.bandName %></td>
+                        <td><%= sub.city %>, <%= sub.state %></td>
+                        <td><%= sub.genre %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+        <h4 class="details">No submissions yet...</h4>
+        <% }; %>
     </div>
     </section>
 <%- include('../partials/footer') %>
