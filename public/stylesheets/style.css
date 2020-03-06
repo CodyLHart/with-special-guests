@@ -120,12 +120,40 @@ button:hover {
   border: 1px solid #00B7FF;
 }
 
-#create-div {
+.create-div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-a {
+  color: #CC5C00;
+}
+
+.dashboard-div a:hover {
+  color: #00B7FF;
+}
+
+.dashboard-div {
+  width: 250px;
+  margin: 20px;
+  text-align: center;
+  color: #CC5C00;
+  border: 1px solid #CC5C00;
+  font-size: 30px;
+}
+
+.dashboard-div:hover {
+  color: #00B7FF;
+  border-color: #00B7FF;
+}
 
 .details {
   text-align: center;
