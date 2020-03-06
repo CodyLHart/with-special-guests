@@ -2,42 +2,47 @@
     <%- include('../partials/aside') %>
     <section id="main">
     <div id="page-header"><h1>SHOWS SEEKING SUPPORT</h1></div>
-    <% if (posts.length) { %>
-        <table>
-            <thead>
-                <th>LOCATION</th>
-                <th>VENUE</th>
-                <th>DATE</th>
-                <th>BAND</th>
-                <th>SUBMISSIONS</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <% posts.forEach(post => { %>
-                    <% console.log('POST.HOST:', typeof post.host) %>
-                    <% console.log('PROFILE._ID:', typeof profile._id) %>
+    <div>
+        <% if (posts.length) { %>
+            <table>
+                <thead>
+                    <th>LOCATION</th>
+                    <th>VENUE</th>
+                    <th>DATE</th>
+                    <th>BAND</th>
+                    <th>SUBMISSIONS</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <% posts.forEach(post => { %>
+                        <% console.log('POST.HOST:', typeof post.host) %>
+                        <% console.log('PROFILE._ID:', typeof profile._id) %>
 
-                    <% if (post.host.toString() !== profile._id.toString()) { %>
-                    <tr>
-                        <td><%= post.city %>, <%= post.state %></td>
-                        <td><%= post.venue %></td>
-                        <% let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] %>
-                        <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; %>
-                        <td><%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %></td>
-                        <td><%= post.hostBand %></td>
-                        <td><%= post.submissions.length %></td>
-                        <td class="button-td">
-                            <form id="view-form" action="/posts/<%= post._id %>" method="GET">
-                                <button id="view-post" type="submit">VIEW</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <% } %>
-                <% }); %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <h3>THERE ARE CURRENTLY NO POSTS</h3>
-    <% }; %>
+                        <% if (post.host.toString() !== profile._id.toString()) { %>
+                        <tr>
+                            <td><%= post.city %>, <%= post.state %></td>
+                            <td><%= post.venue %></td>
+                            <% let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] %>
+                            <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; %>
+                            <td><%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %></td>
+                            <td><%= post.hostBand %></td>
+                            <td><%= post.submissions.length %></td>
+                            <td class="button-td">
+                                <form id="view-form" action="/posts/<%= post._id %>" method="GET">
+                                    <button id="view-post" type="submit">VIEW</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <h3>THERE ARE CURRENTLY NO POSTS</h3>
+        <% }; %>
+        <form class="return-form" action="/users/home" method="GET">
+            <button class="return" type="submit">RETURN TO DASHBOARD</button>
+        </form>
+    </div>
     </section>
 <%- include('../partials/footer') %>

@@ -35,6 +35,11 @@
         <% } else { %>
         <h4 class="details">No submissions yet...</h4>
         <% }; %>
+        <div id="ret-div">
+            <form action="/posts" method="GET">
+                <button class="return" type="submit">RETURN TO SHOWS</button>
+            </form>
+        </div>
     </div>
     </section>
 <%- include('../partials/footer') %>

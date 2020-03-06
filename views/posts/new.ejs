@@ -1,31 +1,36 @@
 <%- include('../partials/header') %>
     <%- include('../partials/aside') %>
-    <section id="main">
-    <div id="page-header"><h1>CREATE A NEW POST</h1></div>
-    <form id="new-post" action="/posts" method="POST">
-        <label>DATE:
-            <input type="date" name="date" required>
-        </label>
-        <label> CITY:
-            <input type="text" name="city">
-          </label>
-        <label> STATE:
-        <select name="state">
-            <% let states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'] %>
-            <% states.forEach(state => { %>
-            <option value="<%= state %>"><%= state %></option>
-            <% }); %>
-        </select>
-        </label>
-        <label>VENUE:
-            <input type="text" name="venue" required>
-        </label>
-        <label>DESCRIPTION:
-            <textarea name="description" required cols="50" rows="10"></textarea>
-        </label>
-        <input type="hidden" name="active" value="true">
-        <input type="hidden" name="host" value="<%= profile._id %>">
-        <button id="post-button" type="submit">CREATE POST</button>
-    </form>
-    </section>
+    <div>
+        <section id="main">
+        <div id="page-header"><h1>CREATE A NEW POST</h1></div>
+        <form id="new-post" action="/posts" method="POST">
+            <label>DATE:
+                <input type="date" name="date" required>
+            </label>
+            <label> CITY:
+                <input type="text" name="city">
+            </label>
+            <label> STATE:
+            <select name="state">
+                <% let states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'] %>
+                <% states.forEach(state => { %>
+                <option value="<%= state %>"><%= state %></option>
+                <% }); %>
+            </select>
+            </label>
+            <label>VENUE:
+                <input type="text" name="venue" required>
+            </label>
+            <label>DESCRIPTION:
+                <textarea name="description" required cols="50" rows="10"></textarea>
+            </label>
+            <input type="hidden" name="active" value="true">
+            <input type="hidden" name="host" value="<%= profile._id %>">
+            <button id="post-button" type="submit">CREATE POST</button>
+        </form>
+        <form class="return-form"action="/users/home" method="GET">
+            <button class="return" type="submit">RETURN TO DASHBOARD</button>
+        </form>
+        </section>
+    </div>
 <%- include('../partials/footer') %>

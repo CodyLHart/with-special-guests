@@ -16,9 +16,12 @@
         <h4 class="details"><%- `${days[post.date.getDay()]} &nbsp;${months[post.date.getMonth()]} &nbsp;${post.date.getDate()}, ${post.date.getFullYear()}` %></h4><br>
         <h3 class="details">SHOW DETAILS</h3>
         <h4 class="details"><%= post.description %></h4>
-        <div id="submit-div">
+        <div id="ret-div">
             <form action="/posts/<%= post._id %>/submit?_method=PUT" method="POST">
-                <button id="submit" type="submit">SUBMIT FOR THIS SHOW</button>
+                <button id="submit-for" type="submit">SUBMIT FOR THIS SHOW</button>
+            </form>
+            <form action="/posts/index" method="GET">
+                <button class="return" type="submit">RETURN TO SHOWS</button>
             </form>
         </div>
     </div>
