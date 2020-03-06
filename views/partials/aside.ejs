@@ -2,7 +2,7 @@
     <aside>
         <% if (profile) { %>
         <% console.log(profile) %>
-        <div id="profile-picture"></div>
+        <div id="profile-picture"><img id="avatar" src="<%= user.avatar %>"></div>
         <h4> <a class="band-name" href="/users/edit"><%= profile.bandName %></a> </h4>
         <h5> <%= profile.city %>, <%= profile.state %> </h5>
         <div class="aside-nav" id="top-aside-nav"><a href="/posts/index">FIND SHOWS</a></div>

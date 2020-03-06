@@ -8,7 +8,8 @@ const userSchema = new Schema({
     profile: {
         type: Schema.Types.ObjectId,
         ref: 'Profile'
-    }
+    },
+    avatar: String
 }, {
     timestamps: true
 });

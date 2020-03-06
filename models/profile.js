@@ -35,6 +35,7 @@ var profileSchema = new Schema({
         type: String,
         required: true
     },
+    avatar: String
 }, {
     timestamps: true
 });

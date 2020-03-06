@@ -11,12 +11,17 @@ passport.use(new GoogleStrategy({
         User.findOne({'googleId': profile.id}, function(err, user) {
             if (err) return cb(err);
             if (user) {
+                if (!user.avatar) {
+                    user.avatar = profile.photos[0].value;
+                    return cb(null, user);
+                };
                 return cb(null, user);
             } else {
                 var newUser = new User({
                     name: profile.displayName,
                     email: profile.emails[0].value,
-                    googleId: profile.id
+                    googleId: profile.id,
+                    avatar: profile.photos[0].value
                 });
                 newUser.save(function(err) {
                     if (err) return cb(err);
